@@ -16,11 +16,11 @@ public class SimpleDiApplication {
     public static void main(String[] args) {
        // SpringApplication.run(SimpleDiApplication.class, args);
 
-        AnnotationConfigApplicationContext ctx =
+        ApplicationContext ctx =
                 new AnnotationConfigApplicationContext(SimpleDiApplication.class);
         Gunslinger gunslinger = ctx.getBean(Gunslinger.class);
         gunslinger.shoot();
-        ctx.registerShutdownHook();
+       // ctx.registerShutdownHook();
     }
 }
 
