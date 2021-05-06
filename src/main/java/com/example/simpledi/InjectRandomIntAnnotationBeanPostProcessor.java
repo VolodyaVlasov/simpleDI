@@ -13,7 +13,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class InjectRandomIntAnnotationBeanPostProcessor implements BeanPostProcessor {
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        System.out.println("before ins  beanPostProcessor");
+        System.out.println("before initialization  beanPostProcessor");
         Field[] fields = bean.getClass().getDeclaredFields();
         for (Field field : fields) {
             InjectRandomInt annotation = field.getAnnotation(InjectRandomInt.class);
@@ -30,7 +30,7 @@ public class InjectRandomIntAnnotationBeanPostProcessor implements BeanPostProce
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        System.out.println("after ins");
+        System.out.println("after initialization");
         return bean;
     }
 
