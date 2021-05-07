@@ -1,9 +1,11 @@
 package com.example.simpledi;
 
-
 import com.example.simpledi.annotation.InjectRandomInt;
 import com.example.simpledi.aop.ChangeName;
+import com.example.simpledi.aop.ShootState;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
@@ -15,13 +17,14 @@ public class Gunslinger {
     private final Gun rightHand;
     private final String name;
 
-    public Gunslinger(Gun leftHand, Gun rightHand) {
+    public Gunslinger(@Qualifier("pistol") Gun leftHand, @Qualifier("automatic") Gun rightHand) {
         System.out.println("constructor");
         this.leftHand = leftHand;
         this.rightHand = rightHand;
         this.name = "Roland";
     }
 
+    @ShootState
     public void shoot() {
         for (int i = 0; i < repeat; i++) {
             System.out.println("leftHand " + leftHand.shoot());
@@ -44,3 +47,6 @@ public class Gunslinger {
         System.out.println("PreDestroy");
     }
 }
+
+
+

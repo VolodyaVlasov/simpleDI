@@ -16,6 +16,4 @@ public class ShootStateAspect {
         Object proceed = joinPoint.proceed();
         System.out.println("стрельба закончилась");
     }
-
-
 }
